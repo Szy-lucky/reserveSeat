@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.user.dao.UserDao">
+
+   <select id="selectUsers" resultType="user">
+      select ut.uid,uname,uphoto,email,tel,credit,sid from usertable ut,userinformation ui where ut.uid=ui.uid limit #{param1},#{param2}
+   </select>
+
+    <select id="countUsers" resultType="int">
+      select count(*) from usertable
+   </select>
+   
+   <select id="login" parameterType="user" resultType="user">
+     select * from usertable u,userinformation ui where uname=#{uname} and upass=#{upass} AND ui.uid=u.uid
+   </select>
+
+    <select id="selectUser" resultType="user">
+        SELECT * FROM userinformation ui,usertable u WHERE u.uid=#{uid} AND ui.uid=#{uid}
+    </select>
+
+    <select id="selectUserByName" resultType="user">
+        SELECT * FROM userinformation ui,usertable u WHERE u.uname=#{uname} AND ui.uid=u.uid
+    </select>
+
+    <select id="selectUserBySid" resultType="user">
+        SELECT * FROM userinformation ui,usertable u WHERE ui.sid=#{sid} AND ui.uid=u.uid
+    </select>
+
+    <select id="selectUserBy" resultType="user">
+        SELECT * FROM userinformation ui,usertable u WHERE ui.sid=#{param2} AND ui.uid=u.uid and  u.uname=#{param1}
+    </select>
+
+    <update id="updateUser" parameterType="user">
+        update userinformation set email=#{email},tel=#{tel},credit=#{credit},sid=#{sid} where uid=#{uid}
+    </update>
+
+    <update id="updateUserU">
+        update userinformation set uphoto=#{uphoto},email=#{email},tel=#{tel} where uid=#{uid}
+    </update>
+
+    <select id="selectByName" resultType="user">
+        select * from usertable where uname=#{uname}
+    </select>
+
+    <insert id="registered">
+        insert into usertable values (null,#{uname},#{upass})
+    </insert>
+
+    <insert id="registeredInfo">
+        insert into userinformation values (#{uid},null,null,null,'n',null)
+    </insert>
+
+    <delete id="deleteUser">
+        delete userinformation,usertable from userinformation,usertable where userinformation.uid=usertable.uid and userinformation.uid=#{uid}
+    </delete>
+
+    <delete id="deleteUsers">
+        delete userinformation,usertable from userinformation,usertable where userinformation.uid=usertable.uid and userinformation.uid in
+        <foreach collection="array" item="item" index="index"
+                 open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <update id="changePassword">
+        update usertable set upass=#{newPass} where upass=#{oldPass} and uname=#{uname}
+    </update>
+</mapper>

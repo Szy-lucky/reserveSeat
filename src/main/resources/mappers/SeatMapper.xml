@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admin.dao.SeatDao">
+
+    <insert id="addSeat" parameterType="seat">
+   insert into seattable values(null,#{seatname},#{spic},#{areaid},#{haselectricity},
+   #{reservation},#{intr})
+    </insert>
+
+    <select id="selectSeats" resultType="seat">
+   select * from seattable where areaid=#{param1}
+    </select>
+
+    <select id="selectSeatsP" resultType="seat">
+      select * from seattable where areaid=#{param1} limit #{param2},#{param3}
+   </select>
+
+    <select id="count" resultType="int">
+      select count(*) from seattable where areaid=#{param1}
+   </select>
+
+    <select id="selectSeat" resultType="seat">
+        select * from seattable where seatid=#{seatid}
+    </select>
+
+    <select id="selectSeatByName" resultType="seat">
+        select * from seattable where seatname=#{param1} and areaid=#{param2}
+    </select>
+
+    <update id="updateSeat" parameterType="seat">
+        update seattable set seatname=#{seatname},spic=#{spic},areaid=#{areaid},haselectricity=#{haselectricity},reservation=#{reservation},
+        intr=#{intr} where seatid=#{seatid}
+    </update>
+
+    <delete id="deleteSeat">
+        delete from seattable where seatid=#{seatid}
+    </delete>
+
+    <delete id="deleteSeats">
+        delete from seattable where seatid in
+        <foreach collection="array" item="item" index="index"
+                 open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admin.dao.OrderDao">
+
+    <select id="selectOrders" resultType="order">
+        select * from ordertable where sid=#{param1}
+    </select>
+
+    <select id="selectOrdersAdmin" resultType="order">
+        select * from ordertable limit #{param1},#{param2}
+    </select>
+
+    <select id="countOrders" resultType="int">
+        select count(*) from ordertable
+    </select>
+
+    <delete id="deleteOrder">
+        delete from ordertable where oid=#{oid}
+    </delete>
+
+    <delete id="deleteOrderUser">
+        delete from ordertable where uid=#{uid}
+    </delete>
+
+    <delete id="deleteOrders">
+        delete from ordertable where oid in
+        <foreach collection="array" item="item" index="index"
+                 open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
+    <insert id="order">
+        insert into ordertable values (null, #{param1}, #{param2}, #{param3}, #{param4}, #{param5})
+    </insert>
+
+    <select id="selectUserOrder" resultType="order">
+        select * from ordertable where uid=#{uid}
+    </select>
+</mapper>

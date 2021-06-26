@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admin.dao.AreaDao">
+    <insert id="addArea" parameterType="area">
+     insert into areatable values(null,#{aname})
+  </insert>
+
+    <select id="selectAreas" resultType="area">
+     select * from areatable
+   </select>
+
+    <update id="updateArea" >
+        update areatable set aname=#{aname} where aid=#{aid}
+    </update>
+
+    <update id="updateAreaId" >
+        update areatable set aid=#{aid} where aname=#{aname}
+    </update>
+
+    <select id="selectAreaById" resultType="area">
+        select * from areatable where aid=#{aid}
+    </select>
+
+    <select id="selectAreaByName" resultType="area">
+        select * from areatable where aname=#{aname}
+    </select>
+
+    <delete id="deleteArea">
+        delete from areatable where aid=#{aid}
+    </delete>
+
+    <delete id="deleteAreas">
+        delete from areatable where aid in
+        <foreach collection="array" item="item" index="index"
+                 open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+</mapper>

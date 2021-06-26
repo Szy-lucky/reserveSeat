@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admin.dao.AdminDao">
+<!--  public Admin  login(Admin admin) -->
+     <select id="login" parameterType="admin" resultType="admin">
+        select * from admintable where aname=#{aname} and apass=#{apass}
+     </select>
+
+    <update id="changePassword">
+        update admintable set apass=#{newPass} where apass=#{oldPass} and aname=#{aname}
+    </update>
+</mapper>
