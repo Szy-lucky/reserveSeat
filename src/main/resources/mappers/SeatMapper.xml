@@ -9,7 +9,7 @@
     </insert>
 
     <select id="selectSeats" resultType="seat">
-   select * from seattable where areaid=#{param1}
+   select * from seattable where areaid=#{param1} and reservation='y'
     </select>
 
     <select id="selectSeatsP" resultType="seat">
