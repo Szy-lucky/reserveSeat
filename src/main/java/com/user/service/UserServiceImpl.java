@@ -293,7 +293,6 @@ public class UserServiceImpl implements UserService{
         //***指定上传文件的上传路劲
         //http://localhost:8080/myproject2021_demo/a/b/uploadfiles
         String realPath=req.getServletContext().getRealPath("uploadfiles");
-        System.out.println(realPath);
         String fileName=myFile.getOriginalFilename();
         File filePath=new File(realPath);
         if (!filePath.exists()) {
