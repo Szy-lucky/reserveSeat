@@ -118,10 +118,10 @@
                 </form>
                 <div style="text-align: center;">
                     <c:if test="${currPage>1}">
-                        <a href="user/userShow?currPage=${currPage-1}">上一页</a>
+                        <a href="order/selectOrders?currPage=${currPage-1}">上一页</a>
                     </c:if>
                     <c:if test="${currPage<countPage}">
-                        <a href="user/userShow?currPage=${currPage+1}">下一页</a>
+                        <a href="order/selectOrders?currPage=${currPage+1}">下一页</a>
                     </c:if>
                 </div>
                 <!-- ***********************************************************************8 -->
