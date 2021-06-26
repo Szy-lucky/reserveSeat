@@ -239,7 +239,7 @@ public class OrderServiceImpl implements OrderService{
             int order = orderDao.order(sid, aid, uid, start, end);
             if(order > 0){
                 model.addAttribute("mess", "预约成功");
-                return "user/orderShow";
+                return "forward:selectOrder";
             }
             else {
                 model.addAttribute("mess", "预约失败!");
