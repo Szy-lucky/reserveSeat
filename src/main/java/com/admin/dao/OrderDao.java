@@ -26,6 +26,8 @@ public interface OrderDao {
 
     public int deleteOrderUser(int uid);
 
+    public int deleteOrderUsers(int[] uids);
+
     public int deleteOrders(int[] oids);
 
     public int order(int sid, int aid, int uid, String start, String end);

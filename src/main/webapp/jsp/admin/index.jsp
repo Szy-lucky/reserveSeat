@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title" style="font-family: '华文行楷'; font-size: 25px;display: inline;">欢迎使用图书馆座位后台管理系统</h3>
-			<a href="jsp/user/main.jsp" class="nav navbar-nav navbar-right">前台</a>
+			<a href="user/i18n" class="nav navbar-nav navbar-right">前台</a>
 		</div>
 		<div class="panel-body">
 			<br />

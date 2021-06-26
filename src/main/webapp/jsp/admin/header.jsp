@@ -54,7 +54,7 @@
 								
 							</ul>
 						</li>
-						<li><a href="jsp/user/main.jsp">前台</a>	</li>
+						<li><a href="user/i18n">前台</a>	</li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->

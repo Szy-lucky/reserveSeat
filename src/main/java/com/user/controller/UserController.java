@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Enumeration;
+import java.util.Locale;
 
 @Controller
 @RequestMapping("user")
@@ -60,6 +61,14 @@ public class UserController {
 		return userService.selectUserU(user.getUid(), model);
 	}
 
+	@RequestMapping("i18n")
+	public String i18n(Locale locale,HttpSession session) {
+		String lg=locale.getLanguage();
+		String cc=locale.getCountry();
+		session.setAttribute("locale", lg+"_"+cc);
+		return "user/main";
+	}
+
 	@RequestMapping("selectUserUpdate")
 	public String selectUserUpdate(Model model, HttpSession session) {
 		User user = (User) session.getAttribute("user");
@@ -72,7 +81,7 @@ public class UserController {
 		while (attributeNames.hasMoreElements()){
 			session.removeAttribute(attributeNames.nextElement().toString());
 		}
-		return "user/main";
+		return "user/i18n";
 	}
 
 	@RequestMapping("selectUserBy")
@@ -106,6 +115,11 @@ public class UserController {
 	@RequestMapping("deleteUsers")
 	public String deleteUsers(int[] uids, Model model) {
 		return userService.deleteUsers(uids, model);
+	}
+
+	@RequestMapping("getChange")
+	public String getChange(){
+		return "user/changePassword";
 	}
 
 	@RequestMapping("change")

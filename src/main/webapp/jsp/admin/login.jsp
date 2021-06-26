@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	<div class="panel panel-info">
 				<div class="panel-heading">
 					<h3 class="panel-title" style="font-family: '华文行楷'; font-size: 25px;display: inline;">管理员登录界面</h3>
-					<a href="jsp/user/main.jsp" class="nav navbar-nav navbar-right">前台</a>
+					<a href="user/i18n" class="nav navbar-nav navbar-right">前台</a>
 				</div>
 				<div class="panel-body">
 					<br /><br /><br />

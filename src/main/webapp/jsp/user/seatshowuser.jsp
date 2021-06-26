@@ -7,6 +7,7 @@
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -35,9 +36,9 @@
 
 <div class="container-fruid">
     <div class="panel panel-default">
-        <div class="panel-heading"><a href="javascript:history.back(-1)">返回</a>
+        <div class="panel-heading"><a href="javascript:history.back(-1)"><spring:message code="return"/></a>
             <h5 class="panel-title"
-                style="font-family: '华文行楷'; font-size: 25px;text-align: center;">${area}座位</h5>
+                style="font-family: '华文行楷'; font-size: 25px;text-align: center;">${area}<spring:message code="seat"/></h5>
             </div>
         <!-- **********************************************8 -->
         <div class="panel-body">

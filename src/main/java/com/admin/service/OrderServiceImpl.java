@@ -191,6 +191,25 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    public String deleteOrderUsers(int[] uid, Model model) {
+        try {
+            int i = orderDao.deleteOrderUsers(uid);
+            if(i>0) {
+                model.addAttribute("mess", "取消成功！");
+                return "user/main";
+            }else {
+                model.addAttribute("mess", "删除失败！");
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            model.addAttribute("mess", "数据库访问异常！");
+
+        }
+        return "user/orderShow";
+    }
+
+    @Override
     public String deleteOrders(int[] oids, Model model) {
         try {
             int i = orderDao.deleteOrders(oids);

@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -36,7 +37,7 @@
 		<!-- ********************************页面的主体内容**************************************************** -->
 		<div class="panel panel-default">
 
-			<div class="panel-heading">座位区域</div>
+			<div class="panel-heading"><spring:message code="area"/></div>
 			<!-- **********************************************8 -->
 			<div class="panel-body">
 
@@ -45,20 +46,20 @@
 							src="images/area/east.jpg"
 							style="width: 432px; height: 241px;" alt="">
 					</a>
-					<br><h2>东区</h2>
+					<br><h2><spring:message code="east"/></h2>
 				</div>
 				<div style="display: inline-block;text-align: center;width: 33%;margin-top: 80px;margin-bottom: 80px;">
 					<a href="admin/getSeatsUser?area=中区"> <img
 							src="images/area/middle.jpg"
 							style="width: 432px; height: 241px;" alt="">
 					</a>
-					<br><h2>中区</h2>
+					<br><h2><spring:message code="middle"/></h2>
 				</div>
 				<div style="display: inline-block;text-align: center;width: 33%;margin-top: 80px;margin-bottom: 80px;">
 					<a href="admin/getSeatsUser?area=西区" > <img
 							src="images/area/weat.jpg"
 							style="width: 432px; height: 241px;" alt="">
-					</a><br><h2>西区</h2>
+					</a><br><h2><spring:message code="west"/></h2>
 				</div>
 
 			</div>

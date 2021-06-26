@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.admin.dao.OrderDao;
 import com.bean.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,9 @@ import org.springframework.web.multipart.MultipartFile;
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserDao userDao;
-	
+
+    @Autowired
+    OrderDao orderDao;
 	/*@Override
 	public String getMain(Model model,HttpSession session) {
 		// TODO Auto-generated method stub
@@ -104,7 +107,7 @@ public class UserServiceImpl implements UserService{
         User user1=userDao.login(user);
         if(user1!=null) {
             session.setAttribute("user", user1);
-            return "user/main";
+            return "forward:i18n";
         }else {
             model.addAttribute("mess", "用户名或密码错误");
             return "user/login";
@@ -231,6 +234,7 @@ public class UserServiceImpl implements UserService{
         try {
             int i = userDao.deleteUser(uid);
             if(i>0) {
+                orderDao.deleteOrderUser(uid);
                 return "admin/succ";
             }else {
                 model.addAttribute("mess", "删除失败！");
@@ -249,6 +253,7 @@ public class UserServiceImpl implements UserService{
         try {
             int i = userDao.deleteUsers(uids);
             if(i>0) {
+                orderDao.deleteOrderUsers(uids);
                 return "admin/succ";
             }else {
                 model.addAttribute("mess", "删除失败！");
@@ -275,7 +280,7 @@ public class UserServiceImpl implements UserService{
                 while (attributeNames.hasMoreElements()){
                     session.removeAttribute(attributeNames.nextElement().toString());
                 }
-                return "user/main";
+                return "forward:i18n";
             }else {
                 model.addAttribute("mess", "修改失败！");
 

@@ -23,6 +23,14 @@
         delete from ordertable where uid=#{uid}
     </delete>
 
+    <delete id="deleteOrderUsers">
+        delete from ordertable where uid in
+        <foreach collection="array" item="item" index="index"
+                 open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
     <delete id="deleteOrders">
         delete from ordertable where oid in
         <foreach collection="array" item="item" index="index"

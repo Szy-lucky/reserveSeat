@@ -23,6 +23,8 @@ public interface OrderService {
 
     public String deleteOrderUser(int uid, Model model);
 
+    public String deleteOrderUsers(int[] uid, Model model);
+
     public String deleteOrders(int[] oids, Model model);
 
     public String order(int sid, int aid, int uid, String start, String end, Model model);

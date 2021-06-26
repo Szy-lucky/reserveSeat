@@ -110,7 +110,7 @@
                     </tr>
                     <c:forEach items="${users}" var="user" varStatus="st">
                         <tr>
-                            <td> <input type="checkbox" name="users" value="${user.uid}"></td>
+                            <td> <input type="checkbox" name="uids" value="${user.uid}"></td>
                             <td>${st.count+starIndex}</td>
                             <td>${user.uname}</td>
                             <td><img alt="" src="uploadfiles/${user.uphoto}" width="50px"> </td>

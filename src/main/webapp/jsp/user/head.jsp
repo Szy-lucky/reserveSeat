@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -36,30 +37,36 @@
 	<div class="container-fruid">
 		<div class="navbar navbar-default " role="navigation">
 			<div class="navbar-header" style="margin-left: 15px;">
-				<a href="jsp/user/main.jsp" class="navbar-brand">大外图书馆座位预订</a>
+				<a href="user/i18n" class="navbar-brand"><spring:message code="title"/></a>
 			</div>
 			<ul class="nav navbar-nav">
 		      <c:if test="${not empty user }">
-			  	<li><a href="user/selectUserU">欢迎  ${user.uname }</a></li>
+				  <li><a href="user/selectUserU"><spring:message code="hello" arguments="${user.uname}"/></a></li>
 			  </c:if>
-			<c:if test="${empty user }">
-				<li><a href="jsp/user/login.jsp">登录</a></li>
-			</c:if>
+			  <c:if test="${empty user }">
+				<li><a href="jsp/user/login.jsp"><spring:message code="login"/></a></li>
+			  </c:if>
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right" style="margin-right: 15px;">
 				<c:if test="${not empty user }">
-				<li><a href="order/selectOrder">我的预约</a></li>
+				<li><a href="order/selectOrder"><spring:message code="order"/></a></li>
 				<li class="dropdown"><a href="##" data-toggle="dropdown"
-					class="dropdown-toggle">我的资料<span class="caret"></span></a>
+					class="dropdown-toggle"><spring:message code="information"/><span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="user/selectUserU">基本资料</a></li>
-						<li><a href="jsp/user/changePassword.jsp">修改密码</a></li>
+						<li><a href="user/selectUserU"><spring:message code="basic"/></a></li>
+						<li><a href="user/getChange"><spring:message code="change"/></a></li>
 					</ul></li>
 				</c:if>
-				<li><a href="jsp/admin/">后台</a></li>
+				<li><a href="user/i18n?locale=zh_CN">
+					<spring:message code="zh"/>
+				</a></li>
+				<li><a href="user/i18n?locale=en_US">
+					<spring:message code="en"/>
+				</a></li>
+				<li><a href="jsp/admin/"><spring:message code="backstage"/></a></li>
 				<c:if test="${not empty user }">
-				<li><a href="user/logout">退出</a></li>
+				<li><a href="user/logout"><spring:message code="exit"/></a></li>
 				</c:if>
 			</ul>
 		</div>

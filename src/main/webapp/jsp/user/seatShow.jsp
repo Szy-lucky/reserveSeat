@@ -8,6 +8,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -53,39 +54,39 @@
                     <img class="media-object" src="uploadfiles/${seat.spic}">
                     <div class="media-body" style="padding-left: 30px;">
                         <div class="form-group">
-                            <label  class="col-sm-4 control-label">座位名称</label>
+                            <label  class="col-sm-4 control-label"><spring:message code="seatname"/></label>
                             <div class="col-sm-4">
                                 <label class="form-control">${seat.seatname}</label>
                             </div>
                         </div><br><br>
                         <div class="form-group">
-                            <label  class="col-sm-4 control-label">座位区域</label>
+                            <label  class="col-sm-4 control-label"><spring:message code="seatarea"/></label>
 
                             <div class="col-sm-4">
                                 <label class="form-control">${area.aname}</label>
                             </div>
                         </div><br><br>
                         <div class="form-group">
-                            <label  class="col-sm-4 control-label">是否有电源</label>
+                            <label  class="col-sm-4 control-label"><spring:message code="haselectricity"/></label>
                             <div class="col-sm-4">
                                 <label  class="form-control">${seat.haselectricity}</label>
                             </div>
                         </div><br><br>
                         <div class="form-group">
-                            <label  class="col-sm-4 control-label">是否有可以预约</label>
+                            <label  class="col-sm-4 control-label"><spring:message code="isReservation"/></label>
 
                             <div class="col-sm-4">
                                 <label  class="form-control">${seat.reservation}</label>
                             </div>
                         </div><br><br>
                         <div class="form-group">
-                            <label  class="col-sm-4 control-label">简介</label>
+                            <label  class="col-sm-4 control-label"><spring:message code="intr"/></label>
                             <div class="col-sm-4">
                                 <label  class="form-control">${seat.intr}</label>
                             </div>
                         </div><br><br>
                         <div class="form-group">
-                            <label  class="col-sm-4 control-label">时间</label>
+                            <label  class="col-sm-4 control-label"><spring:message code="time"/></label>
                             <div class="col-sm-4">
                                 <table>
                                     <tr>
@@ -118,9 +119,9 @@
                         </div><br><br>
                         <form action="order/order" >
                             <div class="form-group">
-                                <label  class="col-sm-4 control-label">预约时间</label>
+                                <label  class="col-sm-4 control-label"><spring:message code="Booked"/></label>
                                 <div class="col-sm-4">
-                                    <label  class="col-sm-4 control-label">起始时间</label>
+                                    <label  class="col-sm-4 control-label"><spring:message code="startTime"/></label>
                                     <select name="start">
                                         <c:forEach items="${orderStarts}" var="orderStarts">
                                             <option value="${orderStarts}">${orderStarts}</option>
@@ -129,7 +130,7 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-4">
-                                    <label  class="col-sm-4 control-label">结束时间</label>
+                                    <label  class="col-sm-4 control-label"><spring:message code="endTime"/></label>
                                     <select name="end" >
                                         <c:forEach items="${orderEnds}" var="orderEnds" >
                                             <option value="${orderEnds}">${orderEnds}</option>
@@ -141,7 +142,7 @@
 
                             <div class="form-group ">
                                 <div class="col-sm-offset-4 col-sm-1">
-                                    <button type="submit" class="btn btn-default ">预约</button>
+                                    <button type="submit" class="btn btn-default "><spring:message code="reservation"/></button>
                                 </div>
                             </div>
                         </form>

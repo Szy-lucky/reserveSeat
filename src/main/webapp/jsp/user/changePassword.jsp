@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -31,27 +32,29 @@
                 <!-- ***********************************************************************8 -->
                 <form class="form-horizontal" action="user/change"  method="post" id="form1">
                     <div class="form-group">
-                        <label  class="col-sm-4 control-label">旧密码</label>
+                        <label  class="col-sm-4 control-label"><spring:message code="oldpassword"/></label>
 
                         <div class="col-sm-4">
-                            <input type="text" name="oldapass"   class="form-control"  placeholder="请输入旧密码">
+                            <spring:message code="inputOldPassword" var="inputOldPassword"/>
+                            <input type="text" name="oldapass"   class="form-control"  placeholder="${inputOldPassword}">
 
                         </div>
                     </div>
                     <br />
                     <div class="form-group">
-                        <label  class="col-sm-4 control-label">新密码</label>
+                        <label  class="col-sm-4 control-label"><spring:message code="newpassword"/></label>
                         <div class="col-sm-4">
-                            <input type="password" name="newapass"  class="form-control"  placeholder="新密码" >
+                            <spring:message code="inputNewPassword" var="inputNewPassword"/>
+                            <input type="password" name="newapass"  class="form-control"  placeholder="${inputNewPassword}" >
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-offset-4 col-sm-1">
-                            <button type="submit" class="btn btn-default">修改</button>
+                            <button type="submit" class="btn btn-default"><spring:message code="change"/></button>
                         </div>
                         <div class="col-sm-offset-0 col-sm-2">
-                            <button type="reset" class="btn btn-default">重置</button>
+                            <button type="reset" class="btn btn-default"><spring:message code="reset"/></button>
                         </div>
                     </div>
                 </form>
